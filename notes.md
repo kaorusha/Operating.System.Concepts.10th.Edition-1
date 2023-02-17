@@ -44,3 +44,46 @@ https://github.com/stemmlerjs/os-design-assign-2/blob/master/Part%201/Server/src
 https://www.geeksforgeeks.org/c-program-demonstrate-fork-and-pipe/
 #### 3.27
 https://github.com/manojkmeena/OS-Project/blob/master/Question%2026%20-%20Design%20a%20file-copying%20program%20named%20filecopy%20using%20ordinary%20pipes.%20This%20program%20will%20be%20passed%20two%20parameters:%20the%20name%20of%20the%20file%20to%20be%20copied%20and%20the%20name%20of%20the%20copied%20file.%20The%20program%20will%20then%20create%20an%20ordinary%20pipe%20and%20write%20the%20contents%20of%20the%20file%20to%20be%20copied%20to%20the%20pipe.%20The%20child%20process%20will%20read%20this%20file%20from%20the%20pipe%20and%20write%20it%20to%20the%20destination%20file.%20For%20example%2C%20if%20we%20invoke%20the%20program%20as%20follows:%20filecopy%20input.txt%20copy.txt%20The%20file%20input.txt%20will%20be%20written%20to%20the%20pipe.%20The%20child%20process%20will%20read%20the%20contents%20of%20this%20file%20and%20write%20it%20to%20the%20destination%20file%20copy.txt.
+## Chapter 4
+### Practice Exercise
+#### 4.1-4.7 
+https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/4.pdf
+#### 4.8 For sequencial or trivial process, or embedded process which sigle core, the extra work needed by multithreading such as swapping context would cost more resource hence slower than single thread.
+#### 4.9
+When there are multiple task that can run independently and not need to wait for each other, or switching available core to prevent the process blocked by some task, multithreaded solution using multiple kernel threads provide better performance than a single-threaded solution on a single-processor system. Exmaple including web server dealing with many user requests, and processes that can be done with recursive devide-and-conquer like manipulating files, matrix calculations.
+#### 4.10 Heap memory is shared across threads, global variables depends on operating system.
+A thread is a basic unit of CPU utilization; it comprises a thread ID , a program counter (PC ), a register set, and a stack. It shares with other threads belonging to the same process its code section, data section, and other operating-system resources, such as open files and signals.
+For POSIX and Windows threading, any data declared globally—that is, declared outside of any function—are shared among all threads belonging to
+the same process. Because Java has no equivalent notion of global data, access to shared data must be explicitly arranged between threads.
+#### 4.11 
+When a OS use many-to-one model, the entire process will block if a thread makes a blocking system call, hence unable to take advantage of multiple processing cores. With one-to-one or many-to-many mapping model, in the multithreading solution works better scenario, a multithreaded solution using multiple user-level threads achieve better performance on a multiprocessor system than on a single-processor system.
+#### 4.12-4-14, 4.18, 4,19, 4.21
+https://github.com/Criviere/os/blob/master/Chapter4.md
+#### 4.15
+Determine if the following problems exhibit task or data parallelism:
+> Data parallelism distributes subsets of the same data across different computing cores and performs the same operation on each core. Task paral-
+lelism distributes not data but tasks across multiple cores. Each task is running a unique operation
+* Using a separate thread to generate a thumbnail for each photo in a collection - data parallelism
+* Transposing a matrix in parallel - data parallelism
+* A networked application where one thread reads from the network and another writes to the network - task parallelism
+* The fork-join array summation application described in Section 4.5.2 - data parallelism
+* The Grand Central Dispatch system - task parallelism
+#### 4.16 - 4.17
+http://mjgeiger.github.io/OS/prev/sp17/homework/OSsp17_hw2_soln.pdf
+#### 4.20
+https://blog.xuite.net/pero.pero1/pero/4771524#
+### Programming Problems
+#### 4.22
+https://github.com/SeanStaz/statisticsCalculator_Multithreaded.c/blob/master/pthreads.c
+#### 4.23
+https://github.com/UnJaw/Programming_HW0/blob/master/Prime.java
+#### 4.24
+https://github.com/SeanStaz/monteCarloMethod.c/blob/master/A3.c
+#### 4.25
+https://codereview.stackexchange.com/questions/256274/calculating-pi-with-monte-carlo-using-openmp
+#### 4.26
+https://www.geeksforgeeks.org/introducing-threads-socket-programming-java/
+#### 4.28
+create a thread[100], each thread[i] create a thread called `allocating_pid()` and than `sleep()`, finally call `release_pid()`, and `join()` thread[i] in the for loop.
+#### 4.29
+https://stackoverflow.com/questions/66996996/how-do-i-get-my-multithreaded-server-client-chat-program-to-echo-messages-to-all
