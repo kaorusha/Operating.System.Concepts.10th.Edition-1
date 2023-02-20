@@ -105,4 +105,60 @@ When α = 0 and τ0 = 100 milliseconds, the formula always makes a prediction of
 This scheduler would favor CPU-bound processes as they are rewarded with a longer time quantum as well as priority boost whenever they consume an entire time quantum. This scheduler does not penalize I/O-bound processes as they are likely to block for I/O before consuming their entire time quantum, but their priority remains the same.
 #### 5.17
 * Gantt charts
-* 
+
+FCFS | p1 t = 5| p2 t = 8| p3 t = 9 | p4 t = 16 | p5 t = 20 |
+--- | --- | --- | --- |--- |---
+
+SJF | p3 t = 1 | p2 t = 4 | p5 t = 8 | p1 t = 13 | p4 t = 20 |
+--- | --- | --- | --- |--- |---
+
+non-preemptive priority | p1 t = 5 | p5 t = 9 | p3 t = 10 | p4 t = 17 | p2 t = 20 |
+--- | --- | --- | --- |--- |---
+
+RR | p1 t = 2 | p2 t = 4 | p3 t = 5 | p4 t = 7 | p5 t = 9 | p1 t = 11 | p2 t = 12 | p4 t = 14 | p5 t = 16 | p1 t = 17 | p4 t = 20|
+--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
+* turnaround time
+
+--- | FCFS | SJF | non-preemptive priority | RR |
+---|---|---|---|---
+p1 | 5 | 13| 5 | 17|
+p2 | 8 | 4 | 20| 12|
+p3 | 9 | 1 | 10| 5 |
+p4 | 16| 20| 17| 20|
+p5 | 20| 8 | 9 | 16|
+* waiting time
+
+--- | FCFS | SJF | non-preemptive priority | RR |
+---|---|---|---|---
+p1 | 0 | 8 | 0 | 12|
+p2 | 5 | 1 | 17| 9 |
+p3 | 8 | 0 | 9 | 4 |
+p4 | 9 | 13| 10| 11|
+p5 | 16| 4 | 5 | 12|
+* SJF
+#### 5.18
+* Gantt chart
+
+p1 t = 15 | p2 t = 20 | p3 t = 30 | p4 t = 40 | p3 t = 45 | p5 t = 50 | p3 t = 55 | p6 t = 70 | p4 t = 80 | p2 t = 95
+---|---|---|---|---|---|---|---|---|---
+* turnaround time: p1 = 15, p2 = 95, p3 = 35, p4 = 55, p5 = 5, p6 = 15
+* waiting time: p1 = 0, p2 = 75, p3 = 20, p4 = 35, p5 = 0
+#### 5.19
+Nice values < 0 are assigned a higher relative priority and such systems may not allow non-root processes to assign themselves higher priorities.
+#### 5.20
+Shortest job first and Priority algorithm could result in starvation.
+#### 5.21
+* (a) The process with two pointers will run twice more often than other process.
+* (b) Advantages: 1. allowing user prioritize process while preventing starvation. 2. the algorithm need not change. Disadvantage: 1. Context switching will now have a larger effect than it did before. 2. Removing processes from the running queue is now significantly harder, as you would have to search through the whole list.
+* (c) Allow the quantum time each process gets to be changed on a per process basis.
+#### 5.22
+(a) The time quantum is 1 millisecond: Irrespective of which process is scheduled, the scheduler incurs a 0.1 millisecond context-switching cost for every context-switch. This results in a CPU utilization of 1/1.1 * 100 = 91%.
+(b) The time quantum is 10 milliseconds: The I/O-bound tasks incur a context switch after using up only 1 millisecond of the time quantum. The time required to cycle through all the processes is therefore 10 * 1.1 + 10.1 (as each I/O-bound task executes for 1 millisecond and then incur the context
+switch task, whereas the CPU-bound task executes for 10 milliseconds before incurring a context switch). The CPU utilization is therefore 20/21.1 * 100 = 94%.
+#### 5.23
+The program could maximize the CPU time allocated to it by not fully utilizing its time quantums. It could use a large fraction of its assigned quantum, but relinquish the CPU before the end of the quantum, thereby increasing the priority associated with the process.
+#### 5.24
+* β > α > 0: FCFS
+* α < β < 0: LIFO
+#### 5.25
+
