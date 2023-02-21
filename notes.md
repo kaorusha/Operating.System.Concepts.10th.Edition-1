@@ -161,4 +161,48 @@ The program could maximize the CPU time allocated to it by not fully utilizing i
 * β > α > 0: FCFS
 * α < β < 0: LIFO
 #### 5.25
+* a. FCFS — discriminates against short jobs since any short jobs arriving after long jobs will have a longer waiting time.
+* b. RR — treats all jobs equally (giving them equal bursts of CPU time) so short jobs will be able to leave the system faster since they will finish first.
+* c.Multilevel feedback queues work similar to the RR algorithm.
+#### 5.26
+A shared ready queue in an symmetric multiprocessing(SMP) environment has to lack frequently to make sure one job is assign to only one processor at a time. So queue accessing becomes bottle neck of the dispatching step.
+#### 5.27
+Similar to multilevel queue scheduling, the high-priority queue can be given 80 percent of the CPU time for RR scheduling among its processes, while the low-priority queue receives 20 percent of the CPU to give to its processes on an FCFS basis.
+#### 5.28
+* a. processor affinity has the benefit of keeping a thread running on the same processor that the thread can take advantage of its data being in that processor’s cache memory
+* b. load balancing by moving child process to another processor can help reducing process waiting time but requires longer memory access times.
+#### 5.29
+An architecture featuring non-uniform memory access(NUMA) has two physical processor chips each with their own CPU and local memory. If the operating
+system’s CPU scheduler and memory-placement algorithms are NUMA-aware and work together, then a thread that has been scheduled onto a particular CPU
+can be allocated memory closest to where the CPU resides, thus providing the thread the fastest possible memory access.
+#### 5.30
+* a. A thread in the REALTIME PRIORITY CLASS with a relative priority of NORMAL: 24
+* b. A thread in the ABOVE NORMAL PRIORITY CLASS with a relative priority of HIGHEST: 12
+* c. A thread in the BELOW NORMAL PRIORITY CLASS with a relative priority of ABOVE NORMAL: 7
+#### 5.31
+HIGH priority class and HIGHEST priority within that class. (numeric priority of 15)
+#### 5.32
+* a. What is the time quantum (in milliseconds) for a thread with priority 15? 160. With priority 40? 40.
+* b. Assume that a thread with priority 50 has used its entire time quantum without blocking. What new priority will the scheduler assign this thread? 50 (keep the same priority)
+* c. Assume that a thread with priority 20 blocks for I/O before its time quantum has expired. What new priority will the scheduler assign this thread? 52 (new priority of return from sleep)
+#### 5.33
+vruntime is less for (1) higher priority and (2) for I/O-bound than CPU-bound.
+* Both A and B are CPU-bound: prority A > B. `vruntime` A < B. (due to nice value)
+* A is I/O-bound, and B is CPU-bound: prority A > B. `vruntime` A < B. (due to nice value and also I/O bound)
+* A is CPU-bound, and B is I/O-bound: unclear. The system may reduce vruntime of B more than original nice value difference(which is 10).
+#### 5.34
+Consider two processes P1 and P2 where period p1 = 50, cpu burst t1 = 25 and p2 = 80, t2 = 35. If P1 were assigned a higher priority than P2, then the following scheduling events happen under rate-monotonic scheduling. P1 is scheduled at t = 0, P2 is scheduled at t = 25, P1 is scheduled at t = 50, and P2 is preempted and again scheduled at t = 75. P2 is not scheduled early enough to meet its deadline(figure 5.23). The earliest deadline schedule performs the following scheduling events: P1 is scheduled at t = 0, P2 is scheduled at t = 25, P1 is scheduled at t = 60, and so on(figure 5.24). This schedule actually meets the deadlines and therefore earliest-deadline-first scheduling is more effective than the rate-monotonic scheduler.
+Rate-monotonic has a limitation: CPU utilization is bounded, and it is not always possible to maximize CPU resources fully. Scheduling cannot guarantee that processes can be scheduled so that they meet their deadlines. In contrast, Earliest-deadline-firs (EDF) scheduling does not require that processes be periodic, nor must a process require a constant amount of CPU time per burst. The only requirement is that a process announce its deadline to the scheduler when it becomes runnable, so scheduling assigns priorities dynamically according to deadline. The appeal of EDF scheduling is that it is theoretically optimal—theoretically, it can schedule processes so that each process can meet its deadline requirements and CPU utilization will be 100 percent. In practice, however, it is impossible to achieve this level of CPU utilization due to the cost of context switching between processes and interrupt handling.
+#### 5.35 
+rate-monotonic scheduling | p1 t = 25 | p2 t = 50 | p1 t = 75 | p2 t = 80 | p2 t = 100 | p1 t = 125 | p2 t = 135 | idle t = 150
+--- | --- | --- | --- |--- |--- | --- | --- | ---
 
+P2 is not scheduled early enough to meet its deadline.
+
+earliest-deadline-first(EDF) scheduling | p1 t = 25 | p2 t = 55 | p1 t = 80 | p2 t = 100 | p1 t = 125 | p2 t = 135 | idle t = 150
+--- | --- | --- | --- |--- |--- |--- |---
+#### 5.36
+Latency must be bound to ensure that real-time tasks receive immediate attention. Furthermore, sometimes interrupts are disabled when kernel data structures are being modified, so the interrupt does not get serviced immediately. For hard real-time systems, the time-period for which interrupts are disabled must be bounded in order to guarantee the desired quality of service.
+#### 5.37
+mobile operating systems use heterogeneous multiprocessing to better manage power consumption by assigning tasks to certain cores based upon the specific demands of the task. By combining a number of slower cores with faster ones, a CPU scheduler can assign tasks that do not require high performance, but may need to run for longer periods, (such as background tasks) to little cores, thereby helping to preserve a battery charge. Similarly, interactive applications which require more processing power, but may run for shorter durations, can be assigned to big cores. Additionally, if the mobile device is in a power-saving mode, energy-intensive big cores can be disabled and the system can rely solely on energy-efficient little cores.
+#### 
