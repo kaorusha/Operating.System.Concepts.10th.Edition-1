@@ -217,6 +217,20 @@ If there are two process called `bid()` simutaneously, the data `highestBid` has
 #### 6.9
 array `v[k]` has race condition because all thread can access its value.
 #### 6.10
-yes. CAS checks no other thread changes the target data and has a lower overhead than lock. https://tigercosmos.xyz/post/2020/10/system/cas-lock-free/
-
-
+yes. [CAS](https://tigercosmos.xyz/post/2020/10/system/cas-lock-free/) checks no other thread changes the target data and has a lower overhead than lock.
+#### 6.11
+"compare and compare-and-swap" idiom work appropriately. Suppose thread 1 is in the function, lock=1;Thread 2 also enters the function when the environment changes. At this time, lock=0. When thread 2 enters compare_and_swap(), set the lock to 1, and then return 0, and then thread 2 exits the loop. When the control is switched back to thread 1, when it enters compare_and swap(), it will return 1 and continue to spin.
+#### 6.12
+https://brainly.com/question/15244517
+#### 6.13-6.15, 6.17
+https://personal.cis.strath.ac.uk/sotirios.terzis/classes/CS.304/Remaining%20Contemplation%20Questions.pdf
+#### 6.16, 6,19
+see [5.15](http://dtucker.cs.edinboro.edu/CSCI380/Spring2017/Chapter5Answers.html) and 5.17
+#### 6.18
+Semaphore is nothing but is a special integer variable that can be accessed by only two system calls which are atomic in nature, known as p() and v() or wait() and signal(). It is a signaling mechanism that if a semaphore value is negative, its magnitude is the number of processes waiting on that semaphore. The busy waiting is not completely but moved from the entry section to the critical sections of application programs. Furthermore, we have limited busy waiting to the critical sections of the wait() and signal() operations, and these sections are short (if properly coded, they should be no more than about ten instructions).
+#### 6.20
+Given that waiting on a lock requires two context switches— a context switch to move the thread to the waiting state and a second context switch to restore the waiting thread once the lock becomes available — the general rule is to use a spinlock if the lock will be held for a duration of less than two context switches(2 * T, T = context switch time).
+#### 6.21
+https://enya.day/computers_and_technology/question-5212688.html
+#### 6.22
+http://mjgeiger.github.io/OS/prev/sp17/homework/OSsp17_hw2_soln.pdf
