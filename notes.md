@@ -205,4 +205,18 @@ earliest-deadline-first(EDF) scheduling | p1 t = 25 | p2 t = 55 | p1 t = 80 | p2
 Latency must be bound to ensure that real-time tasks receive immediate attention. Furthermore, sometimes interrupts are disabled when kernel data structures are being modified, so the interrupt does not get serviced immediately. For hard real-time systems, the time-period for which interrupts are disabled must be bounded in order to guarantee the desired quality of service.
 #### 5.37
 mobile operating systems use heterogeneous multiprocessing to better manage power consumption by assigning tasks to certain cores based upon the specific demands of the task. By combining a number of slower cores with faster ones, a CPU scheduler can assign tasks that do not require high performance, but may need to run for longer periods, (such as background tasks) to little cores, thereby helping to preserve a battery charge. Similarly, interactive applications which require more processing power, but may run for shorter durations, can be assigned to big cores. Additionally, if the mobile device is in a power-saving mode, energy-intensive big cores can be disabled and the system can rely solely on energy-efficient little cores.
-#### 
+## Chapter 6
+### Practice Exercises
+#### 6.1-6.6
+https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/6.pdf
+#### 6.7
+* a. the data `top` has race condition if it is changed by`push()` and `pop()` simutaneously.
+* b. add `acquare()` before changing the value of `top` and `release()` after changing.
+#### 6.8
+If there are two process called `bid()` simutaneously, the data `highestBid` has race condition. Add `acquire()` before the if statement and `release()` before exiting the function to get mutual exclusiveness.
+#### 6.9
+array `v[k]` has race condition because all thread can access its value.
+#### 6.10
+yes. CAS checks no other thread changes the target data and has a lower overhead than lock. https://tigercosmos.xyz/post/2020/10/system/cas-lock-free/
+
+
