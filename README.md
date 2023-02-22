@@ -1,4 +1,6 @@
 # Operating.System.Concepts.10th.Edition
+[PDF](https://os.ecci.ucr.ac.cr/slides/Abraham-Silberschatz-Operating-System-Concepts-10th-2018.pdf)
+
 Operating.System.Concepts.10th.Edition中文翻译
 
 因为个人兴趣进行的翻译，删去了非Linux相关的内容。后续如果有时间会继续翻译其他内容。
