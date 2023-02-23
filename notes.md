@@ -234,3 +234,89 @@ Given that waiting on a lock requires two context switches— a context switch t
 https://enya.day/computers_and_technology/question-5212688.html
 #### 6.22
 http://mjgeiger.github.io/OS/prev/sp17/homework/OSsp17_hw2_soln.pdf
+#### 6.23
+The counting semaphore is initialized to the number of resources available (here it is maximum number of allowed connections). When the count for the semaphore goes to 0, all resources are being used. After that, processes that wish to use a resource will block until the count becomes greater than 0.
+#### 6.24
+n this case, the process will permanently block on the second call to wait(), as the semaphore is now unavailable. So system can't satisfy to ensure
+that processes make progress during their execution life cycle.
+#### 6.25, 6.26, 6.30
+https://www.studocu.com/en-us/document/jacksonville-state-university/fundamentals-of-computer-operating-systems/cs350-chapter-6/41843522
+#### 6.25
+https://www.geeksforgeeks.org/monitor-vs-semaphore/
+#### 6.26
+https://www.quora.com/How-does-the-signal-operation-associated-with-monitors-differ-from-the-corresponding-operation-defined-for-semaphores
+#### 6.27
+http://web.cs.wpi.edu/~cs502/f98/Waltham/hw2soln.html
+#### 6.28
+```c
+type resource = monitor
+var P: array[0..2] of boolean;
+X: condition;
+procedure acquire (id: integer, printer-id: integer);
+begin
+if P[0] and P[1] and P[2] then X.wait(id)
+if not P[0] then printer-id := 0;
+else if not P[1] then printer-id := 1;
+else printer-id := 2;
+P[printer-id]:=true;
+end
+procedure release (printer-id: integer)
+begin
+P[printer-id]:=false;
+X.signal;
+end
+
+begin
+P[0] := P[1] := P[2] := false;
+end
+```
+#### 6.29
+```c
+int sumid=0; /* Shared var that contains the sum of the process ids currently accessing the file */
+int waiting=0; /* Number of process waiting on the semaphore OkToAccess */
+semaphore mutex=1; /* Our good old Semaphore variable ;) */
+semaphore OKToAccess=0; /* The synchronization semaphore */
+
+get_access(int id)
+{
+  sem_wait(mutex);
+  while(sumid+id > n) {
+    waiting++;
+    sem_signal(mutex);
+    sem_wait(OKToAccess);
+    sem_wait(mutex);
+  }
+  sumid += id;
+  sem_signal(mutex);
+}
+
+release_access(int id)
+{
+  int i;
+  sem_wait(mutex);
+  sumid -= id;
+  for (i=0; i < waiting;++i) {
+    sem_signal(OKToAccess);
+  }
+  waiting = 0;
+  sem_signal(mutex);
+}
+
+main()
+{
+  get_access(id);
+  do_stuff();
+  release_access(id);
+}
+```
+Some points to note about the solution:
+
+Release_access wakes up all waiting processes. It is NOT ok to wake up the first waiting process in this problem --- that process may have too large a value of id. Also, more than one process may be eligible to go in (if those processes have small ids) when one process releases access.
+
+Woken up processes try to see if they can get in. If not, they go back to sleep.
+
+Waiting is set to 0 in release_access after the for loop. That avoids unnecessary signals from subsequent release_accesses. Those signals would not make the solution wrong, just less efficient as processes will be woken up unnecessarily.
+#### 6.31
+see [3](https://www3.cs.stonybrook.edu/~kifer/Courses/cse306/homeworks/hw2.pdf)
+#### 6.32
+see [5.20](https://silo.tips/download/chapter-5-exercises-51-answer-52-answer-53-lottery-scheduling)
