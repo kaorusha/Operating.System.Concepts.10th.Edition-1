@@ -83,6 +83,8 @@ https://github.com/SeanStaz/monteCarloMethod.c/blob/master/A3.c
 https://codereview.stackexchange.com/questions/256274/calculating-pi-with-monte-carlo-using-openmp
 #### 4.26
 https://www.geeksforgeeks.org/introducing-threads-socket-programming-java/
+#### 4.27
+https://stackoverflow.com/questions/719677/printing-fibonacci-with-fork
 #### 4.28
 create a thread[100], each thread[i] create a thread called `allocating_pid()` and than `sleep()`, finally call `release_pid()`, and `join()` thread[i] in the for loop.
 #### 4.29
@@ -320,3 +322,33 @@ Waiting is set to 0 in release_access after the for loop. That avoids unnecessar
 see [3](https://www3.cs.stonybrook.edu/~kifer/Courses/cse306/homeworks/hw2.pdf)
 #### 6.32
 see [5.20](https://silo.tips/download/chapter-5-exercises-51-answer-52-answer-53-lottery-scheduling)
+## Chapter 7
+### Practice Exercises
+#### 7.1-7.6
+https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/7.pdf
+#### 7.7
+Some kernel data structures include a process id (pid) management system, kernel process table, and scheduling queues.With a pid management system, it is possible two processes may be created at the same time and there is a race condition assigning each process a unique pid. The same type of race condition can occur in the kernel process table: two processes are created at the same time and there is a race assigning them a location in the kernel process table. With scheduling queues, it is possible one process has been waiting for IO which is now available. Another process is being context-switched out. These two processes are being moved to the Runnable queue at the same time. Hence there is a race condition in the Runnable queue.
+#### 7.8
+You cannot hold a spin lock while you acquire a semaphore, because you might have to sleep while waiting for the semaphore, and you cannot sleep while holding a spin lock (from "Linux Kernel Development" by Robert Love).
+https://stackoverflow.com/questions/4752031/why-cant-you-sleep-while-holding-spinlock
+#### 7.9
+see [6.32](http://hscc.cs.nthu.edu.tw/~sheujp/homework/os09/HW6_ref.pdf)
+#### 7.10
+* a. If the portions are large, then adding and removing data to the shared pool requires a considerable amount of time. Since the producer and consumer cannot execute in the monitor concurrently, parallelism is lost.
+* b. This problem could be alleviated by storing pointers to buffer regions within the monitor instead of storing the buffer regions themselves. Consequently, one could modify the code to simply copy the pointer to the buffer region into and out of the monitor state. This operation should be relatively inexpensive and therefore the period of time that the monitor is being held will be much shorter, thereby increasing the throughput of the monitor.
+#### 7.11
+* a. Throughput in the readers-writers problem is increased by favouring multiple readers as opposed to allowing a single writer to exclusively access the shared values. On the other hand, favouring readers could result in starvation for writers.
+* b. The starvation in the readers-writers problem could be avoided by keeping timestamps associated with waiting processes. When a writer is finished with its task, it would wakeup the process that has been waiting for the longest duration. When a reader arrives and notices that another reader is accessing the database, then it would enter the critical section only if there are no waiting writers. These restrictions would guarantee fairness.
+#### 7.12
+we do not place the call to lock() within the try clause, as lock() does not throw any checked exceptions. Consider what happens if we place lock() within the try clause and an unchecked exception occurs when lock() is invoked (such as OutofMemoryError): The finally clause triggers the call to unlock(), which then throws the unchecked IllegalMonitorStateException, as the lock was never acquired. Unlock statement is always called in the finally block to ensure that the lock is released even if an exception is thrown in the method body(try block).
+#### 7.13
+**Software transactional memory (STM)** works by inserting instrumentation code inside transaction blocks. The code is inserted by a compiler and manages each transaction by examining where statements may run concurrently and where specific low-level locking is required. **Hardware transactional memory (HTM)** uses hardware cache hierarchies and cache coherency protocols to manage and resolve conflicts involving shared data residing in separate processors’ caches. HTM requires no special code instrumentation and thus has less overhead than STM.
+### Programming Problems
+#### 7.14
+https://github.com/pronaypeddiraju/OS-Project/blob/master/P159_part1.cpp
+#### 7.16
+A mutex is created with the pthread mutex init() function. The first parameter is a pointer to the mutex. By passing NULL as a second parameter, we initialize the mutex to its default attributes.The mutex is acquired and released with the pthread mutex lock() and pthread mutex unlock() functions. [stack-ptr.c](https://www.chegg.com/homework-help/questions-and-answers/program-stack-ptrc-implements-stack-using-linked-list-however-contains-race-condition-appr-q95139381)
+#### 7.17
+https://github.com/github-bishwajeet/OS-Assignment/blob/master/OS_Assignment.cpp
+#### 7.19
+https://github.com/nikhilkrdwivedi/OS-Assignment/blob/master/Barrier.c
