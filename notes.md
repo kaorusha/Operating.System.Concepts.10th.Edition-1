@@ -352,3 +352,16 @@ A mutex is created with the pthread mutex init() function. The first parameter i
 https://github.com/github-bishwajeet/OS-Assignment/blob/master/OS_Assignment.cpp
 #### 7.19
 https://github.com/nikhilkrdwivedi/OS-Assignment/blob/master/Barrier.c
+## Chapter 8
+### Practice Exercises
+#### 8.1-8.11
+https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/8.pdf
+#### 8.12
+* a. The four necessary conditions for a deadlock are (1) mutual exclusion; (2) hold-and-wait; (3) no preemption; and (4) circular wait. The mutual exclusion condition holds since only one car can occupy a space in the roadway. Hold-and-wait occurs where a car holds onto its place in the roadway while it waits to advance in the roadway. A car cannot be removed (i.e. preempted) from its position in the roadway. Lastly, there is indeed a circular wait as each car is waiting for a subsequent car to advance. The circular wait conditi on is also easily observed from the graphic.
+* b. A simple rule that would avoid this traffic deadlock is that a car may not advance into an intersection if it is clear it will not be able immediately to clear the intersection.
+#### 8.15
+YES. (1)Mutual exclusion is maintained, as they cannot be shared if there is a writer. (2)Hold-and-wait is possible, as a thread can hold one reader—writer lock while waiting to acquire another. (3) You cannot take a lock away, so no preemeption is upheld. (4) A circular wait among all threads is possible.
+#### 8.16
+If thread_one is scheduled before thread_two and thread_one is able to acquire both mutex locks before thread_two is scheduled, deadlock will not occur. Deadlock can only occur if either thread_one or thread_two is able to acquire only one lock before the other thread acquires the second lock.
+#### 8.20
+a, d, e, f
