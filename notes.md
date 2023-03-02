@@ -363,5 +363,26 @@ https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-
 YES. (1)Mutual exclusion is maintained, as they cannot be shared if there is a writer. (2)Hold-and-wait is possible, as a thread can hold one reader—writer lock while waiting to acquire another. (3) You cannot take a lock away, so no preemeption is upheld. (4) A circular wait among all threads is possible.
 #### 8.16
 If thread_one is scheduled before thread_two and thread_one is able to acquire both mutex locks before thread_two is scheduled, deadlock will not occur. Deadlock can only occur if either thread_one or thread_two is able to acquire only one lock before the other thread acquires the second lock.
+#### 8.17
+* a. **containment** add a lock for acquiring all other locks.
+```c
+void transaction(Account from, Account to, double amount)
+{
+  Semaphore lock1, lock2, lock3;
+  wait(lock3);
+  lock1 = getLock(from);
+  lock2 = getLock(to);
+  wait(lock1);
+    wait(lock2);
+      withdraw(from, amount);
+      deposit(to, amount);
+    signal(lock3);
+    signal(lock2);
+  signal(lock1);
+}
+```
+* b. use `pthread_mutex_trylock()` and if livelock happens, sleep for a random period before retrying.
+#### 8.18
+(a) T2-->T3-->T1 or T2-->T1-->T3 (b) 
 #### 8.20
 a, d, e, f
