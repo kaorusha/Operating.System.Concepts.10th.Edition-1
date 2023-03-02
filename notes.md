@@ -383,6 +383,38 @@ void transaction(Account from, Account to, double amount)
 ```
 * b. use `pthread_mutex_trylock()` and if livelock happens, sleep for a random period before retrying.
 #### 8.18
-(a) T2-->T3-->T1 or T2-->T1-->T3 (b) 
+(a) T2-->T3-->T1 or T2-->T1-->T3 (b) deadlock T1-->R3-->T3-->R1-->T1 (c) T2-->T3-->T1 or T3-->T2-->T1 (d) deadlock R1-->T1-->R2-->T3-->R1 and R1-->T2-->R2-->T4-->R1 (e) T2-->T1(or T3)-->T3(or T1)-->T4 (f) T4(or T2)-->T2(or T4)-->T1-->T3
+#### 8.19
+* a. Runtime overhead - A deadlock-avoidance scheme tends to increase the runtime overheads than the circular-wait scheme due to the cost of keep track of the current resource allocation.
+* b. System throughput - However, a deadlock-avoidance scheme allows for more concurrent use of resources than schemes that statically prevent the formation of deadlock. In that sense, a deadlock-avoidance scheme could increase system throughput.
 #### 8.20
 a, d, e, f
+#### 8.21
+Need = Max - Allocation = \[\[4,2,2,1], \[2,1,0,2], \[4,3,0,2], \[3,1,1,1], \[4,2,3,1]]
+#### 8.22
+There is no circular-waiting happens. Suppose the system is deadlocked. This implies that each process is holding one resource and is waiting for 
+one more. Since there are three processes and four resources, one process must be able to obtain two resources. This process requires no more resources and, therefore it will return its resources when done.
+#### 8.23
+* a. The maximum need of each thread is between one resource and m resources.--> $1 <= Max_i <= m$
+* b. The sum of all maximum needs is less than $m + n$. -->
+$$\sum_{i=1}^n Max_i = \sum_{i=1}^n Allocation_i + Need_i < m + n$$
+If there exists a deadlock state then:
+$$\sum_{i=1}^n Allocation_i = m$$
+So condition b comes to
+$$\sum_{i=1}^n Need_i < n$$ 
+This implies that there exists a process $P_i$ such that $Need_i = 0$. Since from condition a $Max_i >= 1$ it follows that $P_i$ has at least one resource that it can release. Hence the system cannot be in a deadlock state.
+#### 8.24
+The following rule prevents deadlock: when a philosopher makes a request for the first chopstick, do not grant the request if there is no other philosopher with two chopsticks and if there is only one chopstick remaining.
+#### 8.25
+When a philosopher makes a request for a chopstick, allocate the request if: 1) the philosopher has two chopsticks and there is at least one chopstick remaining, 2) the philosopher has one chopstick and there are at least two chopsticks remaining, 3) there is at least one chopstick remaining, and there is at least one philosopher with three chopsticks, 4) the philosopher has no chopsticks, there are two chopsticks remaining, and there is at least one other philosopher with two chopsticks assigned.
+#### 8.26
+see [7.11](https://docplayer.net/64549995-Chapter-7-exercises-7-1-answer-7-2-answer-7-3-answer-7-4-answer.html). If we use single-resource-type scheme and for each type which seems safe for need may contradict with other resource type. Banker's scheme simuteneously consider all resource type. 
+#### 8.27
+(a) T4-->T0-->remains arbitrarily (b) T2(or T4)-->T4(or T2)-->T1(or T3)-->remains arbitrarily (c) unsafe, non of tread need is satisfied (d) T3-->remains arbitrarily
+#### 8.28
+(a) T2 or T3 first, than T0 and T1 can be finished, than remains can be finished. (b) No. If granted, $Need_4 = \[1,2,3,0]$ and $Available = \[0,0,0,0]$, which is unsafe state. (c) Yes. If granted, $Need_2 = \[0,0,1,0]$ and $Available = \[2,1,1,4]$, T2 can be finished, and keeps in safe state. (d) Yes. If granted, $Need_3 = \[0,0,1,0]$ and $Available = \[0,0,1,2]$, T3 can be finished, and keeps in safe state.
+#### 8.29
+The optimistic assumption is that there will not be any form of circular wait in terms of resources allocated and processes making requests for them. This assumption could be violated if a circular wait does indeed occur in practice.
+> section 8.7.2 we take an optimistic attitude and assume that Ti will require no more resources to complete its task; it will thus soon return all currently allocated resources to the system. If our assumption is incorrect, a deadlock may occur later. That deadlock will be detected the next time the deadlock-detection algorithm is invoked.
+#### 8.30-8.31
+see [7.15-7.16](https://docplayer.net/64549995-Chapter-7-exercises-7-1-answer-7-2-answer-7-3-answer-7-4-answer.html)
