@@ -418,3 +418,7 @@ The optimistic assumption is that there will not be any form of circular wait in
 > section 8.7.2 we take an optimistic attitude and assume that Ti will require no more resources to complete its task; it will thus soon return all currently allocated resources to the system. If our assumption is incorrect, a deadlock may occur later. That deadlock will be detected the next time the deadlock-detection algorithm is invoked.
 #### 8.30-8.31
 see [7.15-7.16](https://docplayer.net/64549995-Chapter-7-exercises-7-1-answer-7-2-answer-7-3-answer-7-4-answer.html)
+## Chapter 9
+### Practice Exercises
+#### 9.1-9.10
+https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/9.pdf
