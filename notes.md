@@ -422,3 +422,50 @@ see [7.15-7.16](https://docplayer.net/64549995-Chapter-7-exercises-7-1-answer-7-
 ### Practice Exercises
 #### 9.1-9.10
 https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/9.pdf
+#### 9.11
+https://www.geeksforgeeks.org/difference-between-internal-and-external-fragmentation/
+#### 9.12
+The linker has to replace unresolved symbolic addresses with the actual addresses associated with the variables in the final program binary. In order to perform this, the modules should keep track of instructions that refer to unresolved symbols. During linking, each module is assigned a sequence of addresses in the overall program binary and when this has been performed, unresolved references to symbols exported by this binary could be patched in other modules since every other module would contain the list of instructions that need to be patched.
+#### 9.13
+* first-fit
+
+process| 100 MB | 170 MB | 40 MB | 205 MB | 300 MB | 185 MB
+-------|--------|--------|-------|------|--------|-------
+200 MB | 100 MB | 170 MB | 40 MB | 5 MB | 300 MB | 185 MB
+ 15 MB | 85 MB  | 170 MB | 40 MB | 5 MB | 300 MB | 185 MB
+185 MB | 85 MB  | 170 MB | 40 MB | 5 MB | 115 MB | 185 MB
+ 75 MB | 10 MB  | 170 MB | 40 MB | 5 MB | 115 MB | 185 MB
+175 MB | 10 MB  | 170 MB | 40 MB | 5 MB | 115 MB |  10 MB
+ 80 MB | 10 MB  |  90 MB | 40 MB | 5 MB | 115 MB |  10 MB
+* best-fit
+
+process| 100 MB | 170 MB | 40 MB | 205 MB | 300 MB | 185 MB
+-------|--------|--------|-------|------|--------|-------
+200 MB | 100 MB | 170 MB | 40 MB | 5 MB | 300 MB | 185 MB
+ 15 MB | 85 MB  | 170 MB | 25 MB | 5 MB | 300 MB | 185 MB
+185 MB | 85 MB  | 170 MB | 25 MB | 5 MB | 300 MB |   0 MB
+ 75 MB | 10 MB  | 170 MB | 25 MB | 5 MB | 300 MB |   0 MB
+175 MB | 10 MB  | 170 MB | 25 MB | 5 MB | 125 MB |   0 MB
+ 80 MB | 10 MB  | 170 MB | 25 MB | 5 MB |  45 MB |   0 MB
+* worst-fit
+
+process| 100 MB | 170 MB | 40 MB | 205 MB | 300 MB | 185 MB
+-------|--------|--------|-------|--------|--------|-------
+200 MB | 100 MB | 170 MB | 40 MB | 205 MB | 100 MB | 185 MB
+ 15 MB | 100 MB | 170 MB | 40 MB | 190 MB | 100 MB | 185 MB
+185 MB | 100 MB | 170 MB | 40 MB |   5 MB | 100 MB | 185 MB
+ 75 MB | 100 MB | 170 MB | 40 MB |   5 MB | 100 MB | 110 MB
+175 MB | 100 MB | 170 MB | 40 MB |   5 MB | 100 MB | 110 MB
+ 80 MB | 100 MB |  90 MB | 40 MB |   5 MB | 100 MB | 110 MB
+
+process with 175 MB must wait in worst-fit, and first-fit left more space than best-fit. 
+#### 9.14
+* a. contiguous-memory allocation: might require relocation of the entire program since there is not enough space for the program to grow its allocated memory space.
+* b. paging: incremental allocation of new pages is possible in this scheme without requiring relocation of the program’s address space.
+#### 9.15
+Issues | contiguous memory allocation scheme | paging
+-------|-------------------------------------|--------
+a. External fragmentation | holes develop as old processes die and new processes are initiated.| |
+b. Internal fragmentation | |Processes are allocated in page granularity and results in a corresponding wastage of space.
+c. Ability to share code across processes | not allowed, since a process’s virtual memory segment is not broken into noncontiguous fine grained segments. | allowed
+#### 9.16
