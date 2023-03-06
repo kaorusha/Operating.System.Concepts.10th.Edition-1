@@ -469,3 +469,52 @@ a. External fragmentation | holes develop as old processes die and new processes
 b. Internal fragmentation | |Processes are allocated in page granularity and results in a corresponding wastage of space.
 c. Ability to share code across processes | not allowed, since a process’s virtual memory segment is not broken into noncontiguous fine grained segments. | allowed
 #### 9.16
+An address on a paging system is a logical page number and an offset. The physical page is found by searching a table based on the logical page number to produce a physical page number. Because the operating system controls the contents of this table, it can limit a process to accessing only those physical pages allocated to the process. There is no way for a process to refer to a page it does not own because the page will not be in the page table. To allow such access, an operating system simply needs to allow entries for non-process memory to be added to the process’s page table. This is useful when two or more processes need to exchange data they just read and write to the same physical addresses (which may be at varying logical addresses). This makes for
+very efficient interprocess communication.
+#### 9.17
+Mobile devices generally use flash memory rather than more spacious hard disks for nonvolatile storage. The resulting space constraint is one reason why mobile operating-system designers avoid swapping. Other reasons include the limited number of writes that flash memory can tolerate before it becomes unreliable and the poor throughput between main memory and flash memory in these devices.
+#### 9.18
+The boot disk has limited storage capacity.
+#### 9.19
+When the TLB attempts to resolve virtual page numbers, it ensures that the ASID for the currently running process matches the ASID associated with the virtual page. If the ASIDs do not match, the attempt is treated as a TLB miss. If the TLB does not support separate ASIDs, then every time a new page table is selected (for instance, with each context switch), the TLB must be flushe (or erased) to ensure that the next executing process does not use the wrong translation information. Otherwise, the TLB could include old entries that contain valid virtual addresses but have incorrect or invalid physical addresses left over from the previous process.
+#### 9.20
+* a. Contiguous-memory allocation requires the operating system to allocate the entire extent of the virtual address space to the program when it starts executing. This could be much larger than the actual memory requirements of the process.
+* b. Paging does not require the operating system to allocate the maximum extent of the virtual address space to a process at startup time, but it still requires the operating system to allocate a large page table spanning all of the program’s virtual address space. When a program needs to extend the stack or the heap, it needs to allocate a new page but the corresponding page table entry is preallocated.
+#### 9.21
+address references | page numbers(1-KB page size) | offset
+-------------------|--------------|-------
+21205              |     20       |  725
+164250             |    160       |  410
+121357             |    118       |  525
+16479315           |  16093       |   83
+27253187           |  26614       |  451
+#### 9.22
+* a. A conventional, single-level page table has $2^{12}$ entries. (virtual address / page size)
+* b. An inverted page table has $2^8$ entries. (physical address / page size)
+maximum amount of physical memory is $2^{20}$(or $2^{10}$ KB).
+#### 9.23
+Consider a logical address space of 2,048 pages with a 4-KB page size, mapped onto a physical memory of 512 frames.
+* a. 11 + 13 bits are required in the logical address
+* b. 9 + 11 bits are required in the physical address
+#### 9.24
+Consider a computer system with a 32-bit logical address and 8-KB page size. The system supports up to 1 GB of physical memory.
+* a. A conventional, single-level page table has $2^{14}$ entries.
+* b. An inverted page table has $2^{12}$ entries.
+#### 9.25
+Consider a paging system with the page table stored in memory.
+* a. If a memory reference takes 50 nanoseconds, how long does a paged memory reference take?<br/>
+we must first access memory for the page table and frame number (50 nanoseconds) and then access the desired byte in memory (50 nanoseconds), for a total of 100 nanoseconds.
+* b. If we add TLBs, and if 75 percent of all page-table references are found in the TLBs, what is the effective memory reference time? (Assume that finding a page-table entry in the TLBs takes 2 nanoseconds, if the entry is present.)<br/>
+effective memory-access time = 0.75 x (2 + 50) + 0.25 x 100 = 64 nanoseconds$
+#### 9.26
+In certain situations the page tables could become large enough that by paging the page tables, one could simplify the memory allocation problem (by ensuring that everything is allocated as fixed-size pages as opposed to variable-sized chunks) and also enable the swapping of portions of page table that are not currently used.
+#### 9.27
+* a. Describe all the steps taken by the IA-32 in translating a logical address into a physical address.<br/>
+The IA-32 address translation is shown in more detail in Figure 9.23. The 10 high-order bits reference an entry in the outermost page table, which IA-32 terms the page directory. (The CR3 register points to the page directory for the current process.) The page directory entry points to an inner page table that is indexed by the contents of the innermost 10 bits in the linear address. Finally, the low-order bits 0–11 refer to the offset in the 4-KB
+page pointed to in the page table.<br/>
+One entry in the page directory is the Page Size flag, which—if set—indicates that the size of the page frame is 4 MB and not the standard 4 KB. If this flag is set, the page directory points directly to the 4-MB page frame, bypassing the inner page table; and the 22 low-order bits in the linear address
+refer to the offset in the 4-MB page frame.
+* b. What are the advantages to the operating system of hardware that provides such complicated memory translation?
+The advantage is that the OS can provide protection both through segmentation and paging.
+* c. Are there any disadvantages to this address-translation system? If so, what are they? If not, why is this scheme not used by every manufacturer?
+The complexity makes it slow and inflexible - OS's can't choose a page table format or handle TLB misses. The OS had to be more complex to manage both segments and page tables.
