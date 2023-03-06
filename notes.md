@@ -514,7 +514,7 @@ The IA-32 address translation is shown in more detail in Figure 9.23. The 10 hig
 page pointed to in the page table.<br/>
 One entry in the page directory is the Page Size flag, which—if set—indicates that the size of the page frame is 4 MB and not the standard 4 KB. If this flag is set, the page directory points directly to the 4-MB page frame, bypassing the inner page table; and the 22 low-order bits in the linear address
 refer to the offset in the 4-MB page frame.
-* b. What are the advantages to the operating system of hardware that provides such complicated memory translation?
+* b. What are the advantages to the operating system of hardware that provides such complicated memory translation?<br/>
 The advantage is that the OS can provide protection both through segmentation and paging.
-* c. Are there any disadvantages to this address-translation system? If so, what are they? If not, why is this scheme not used by every manufacturer?
+* c. Are there any disadvantages to this address-translation system? If so, what are they? If not, why is this scheme not used by every manufacturer?<br/>
 The complexity makes it slow and inflexible - OS's can't choose a page table format or handle TLB misses. The OS had to be more complex to manage both segments and page tables.
