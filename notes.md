@@ -523,11 +523,42 @@ The complexity makes it slow and inflexible - OS's can't choose a page table for
 #### 10.1-10.14
 https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/10.pdf
 #### 10.4 [explain](https://gateoverflow.in/71580/ugc-net-cse-august-2016-part-3-question-51)
-#### 10.5
-The virtual addresses is 12-bit so 0 to 7 bit is 256-byte page size represents the offset and 8 to 11 bit represents virtual page number.
 #### 10.15 [9.14][1]
+#### 10.16 [9.15][2]
 #### 10.17 [9.16][1]
+#### 10.18
+The virtual addresses is 12-bit so 0 to 7 bit is 256-byte page size represents the offset and 8 to 11 bit represents virtual page number.
+* 0x2A1 --> 0xAA1
+* 0x4E6 --> 0x9E6
+* 0x94A --> 0x14A
+* 0x316 --> 0xF16
 #### 10.19 [9.19][1]
+#### 10.20 [10.3](https://courses.cs.washington.edu/courses/cse451/04au/homework/hw4sol..htm)
+#### 10.21 [9.21][2]
+#### 10.22
+* a. Convert the following virtual addresses (in hexadecimal) to the equivalent physical addresses.
+  * 0x621C --> 0x821C
+  * 0xF0A3 --> 0x20A3
+  * 0xBC1A --> 0x4C1A
+  * 0x5BAA --> 0xDBAA
+  * 0x0BA1 --> 0x9BA1
+* b. The logical address (in hexadecimal) that results in a page fault is the page numbers in the table with a dash for a page frame indicates that the page is not in memory, which is 1, 9, and E(14).
+* c. From what set of page frames will the LRU page-replacement algorithm choose in resolving a page fault? Any page table entries that have a reference bit of zero.
+#### 10.23 [9.7][3]
+#### 10.24
+page-reference strings | 2 | 6 | 9 | 2 | 4 | 2 | 1 | 7 | 3 | 0 | 5 | 2 | 1 | 2 | 9 | 5 | 7 | 3 | 8 | 5
+-----------------------|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
+|  (1) FIFO            | 2 | 2 | 2 | 2 | 4 | 4 | 4 | 7 | 7 | 7 | 5 | 5 | 5 | 5 | 9 | 9 | 9 | 3 | 3 | 3
+|                      |   | 6 | 6 | 6 | 6 | 2 | 2 | 2 | 3 | 3 | 3 | 2 | 2 | 2 | 2 | 5 | 5 | 5 | 8 | 8
+|                      |   |   | 9 | 9 | 9 | 9 | 1 | 1 | 1 | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 7 | 7 | 7 | 5       
+|  (2) LRU             | 2 | | | | | | | | | | | | | | | | | | |
+|                      |   | | | | | | | | | | | | | | | | | | |
+|                      |   | | | | | | | | | | | | | | | | | | |
+|  (3) Optimal (OPT)   | 2 | | | | | | | | | | | | | | | | | | |
+|                      |   | | | | | | | | | | | | | | | | | | |
+|                      |   | | | | | | | | | | | | | | | | | | |
 #### 10.26 [9.25][1]
 #### 10.29 [9.28][1]
 [1]: https://ininet.org/9-14-assume-a-program-has-just-referenced-an-address-in-virtua.html
+[2]: http://www.jade-cheng.com/uh/coursework/ics-412/homework-6.pdf
+[3]: https://docplayer.net/25406625-Chapter-9-exercises-9-1-answer-9-2-ready-running-blocked-answer-9-3.html
