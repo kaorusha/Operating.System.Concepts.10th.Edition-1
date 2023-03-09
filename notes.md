@@ -518,3 +518,16 @@ refer to the offset in the 4-MB page frame.
 The advantage is that the OS can provide protection both through segmentation and paging.
 * c. Are there any disadvantages to this address-translation system? If so, what are they? If not, why is this scheme not used by every manufacturer?<br/>
 The complexity makes it slow and inflexible - OS's can't choose a page table format or handle TLB misses. The OS had to be more complex to manage both segments and page tables.
+## Chapter 10
+### Practice Exercise
+#### 10.1-10.14
+https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/10.pdf
+#### 10.4 [explain](https://gateoverflow.in/71580/ugc-net-cse-august-2016-part-3-question-51)
+#### 10.5
+The virtual addresses is 12-bit so 0 to 7 bit is 256-byte page size represents the offset and 8 to 11 bit represents virtual page number.
+#### 10.15 [9.14][1]
+#### 10.17 [9.16][1]
+#### 10.19 [9.19][1]
+#### 10.26 [9.25][1]
+#### 10.29 [9.28][1]
+[1]: https://ininet.org/9-14-assume-a-program-has-just-referenced-an-address-in-virtua.html
