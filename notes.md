@@ -658,3 +658,28 @@ page-reference strings | 1 | 2 | 3 | 4 | 5 | 3 | 4 | 1 | 6 | 7 | 8 | 7 | 8 | 9 |
 [2]: http://www.jade-cheng.com/uh/coursework/ics-412/homework-6.pdf
 [3]: https://docplayer.net/25406625-Chapter-9-exercises-9-1-answer-9-2-ready-running-blocked-answer-9-3.html
 [4]: https://sites.cs.ucsb.edu/~tyang/class/170.w06/solutions/solution3.html
+## Chapter 11
+### Practice Exercises
+#### 11.1-11.10
+https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/11.pdf
+#### 11.11 [12.18][1]
+#### 11.12 
+Due to the lack of moving parts in NVM devices, performance is unaffected by problems like seek time and rotational delay. Therefore, a straightforward FCFS policy will do.
+#### 11.13
+cylinder request         | 0 | 356 | 544 | 1212 | 1523 | 1618 | 2069 | 2150 | 2296 | 2800 | 3681 | 4695 | 4999 
+-------------------------|---|-----|-----|------|------|------|------|------|------|------|------|------|-------
+| (a) FCFS               |   |     |     |      |      |      |      |a,b,c |      |      |      |      |  
+|     distance = 12471   |   |     |     |      |      |      |  a   |      | b,c  |      |      |      |
+|                        |   |     |     |  a   |      |      |      |      |      | b,c  |      |      |
+|                        |   |     |     |      |      |      |      |      |  a   |      | b,c  |      |
+| (b) SCAN               |   |     |     |      |      |      |      |      |      |   a  |      |  b,c |
+|     distance = 7492    |   |     |  a  |      |      |      |      |      |      |      |      |      |  b,c
+|                        | c |     |     |      |      |  a   |  b   |      |      |      |      |      |
+|                        |   | a,c |     |      |      |  b   |      |      |      |      |      |      |
+| (c) C-SCAN             |   |     |  c  |      |  a,b |      |      |      |      |      |      |      |
+|     distance = 9917    |   |     |     | b,c  |      |      |      |      |      |      |      |  a   |
+|                        |   |     |  b  |      |  c   |      |      |      |      |      |   a  |      |
+|                        |   |  b  |     |      |      |   c  |      |      |      |      |      |      |
+|                        |   |     |     |      |      |      |   c  |      |      |      |      |      |
+
+[1]: http://hscc.cs.nthu.edu.tw/~sheujp/homework/os09/HW12_ref.pdf
