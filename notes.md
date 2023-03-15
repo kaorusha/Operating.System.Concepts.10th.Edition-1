@@ -669,7 +669,7 @@ Due to the lack of moving parts in NVM devices, performance is unaffected by pro
 cylinder request         | 0 | 356 | 544 | 1212 | 1523 | 1618 | 2069 | 2150 | 2296 | 2800 | 3681 | 4695 | 4999 
 -------------------------|---|-----|-----|------|------|------|------|------|------|------|------|------|-------
 | (a) FCFS               |   |     |     |      |      |      |      |a,b,c |      |      |      |      |  
-|     distance = 12471   |   |     |     |      |      |      |  a   |      | b,c  |      |      |      |
+|     distance = 13011   |   |     |     |      |      |      |  a   |      | b,c  |      |      |      |
 |                        |   |     |     |  a   |      |      |      |      |      | b,c  |      |      |
 |                        |   |     |     |      |      |      |      |      |  a   |      | b,c  |      |
 | (b) SCAN               |   |     |     |      |      |      |      |      |      |   a  |      |  b,c |
@@ -680,6 +680,30 @@ cylinder request         | 0 | 356 | 544 | 1212 | 1523 | 1618 | 2069 | 2150 | 22
 |     distance = 9917    |   |     |     | b,c  |      |      |      |      |      |      |      |  a   |
 |                        |   |     |  b  |      |  c   |      |      |      |      |      |   a  |      |
 |                        |   |  b  |     |      |      |   c  |      |      |      |      |      |      |
-|                        |   |     |     |      |      |      |   c  |      |      |      |      |      |
-
+| [other algorithm](https://www.geeksforgeeks.org/disk-scheduling-algorithms/)                       |   |     |     |      |      |      |   c  |      |      |      |      |      |
+#### 11.14
+* a. rewrite $d = \frac{1}{2}at^2$ and get $t = \sqrt{\frac{2d}{a}}$
+* b. solve the simultaneous equations $t = x + y\sqrt{L}$ that result from (t = 1, L = 1) and (t = 18, L = 4999) to obtain $t = 0.7561 + 0.2439\sqrt{L}$
+* c. total seek time is 29ms(FCFS), 22ms(SCAN), 25ms(C-SCAN). SCAN is the fatest.
+* d. percentage speedup = 6 / 29 = 20.7%
+#### 11.15
+* a. At 7200 RPM, the rotational latency is at worst 1/7200 minute (8.33 milliseconds) and on the average it is half that (4.17 ms).
+* b. Solving $t = 0.7561 + 0.2439\sqrt{L}$ for t = 4.167 gives L = 195.58, so we can seek over 195 tracks (about 4% of the disk) during an average rotational latency.
+#### 11.16
+HDDs and NVM devices [compare](https://www.promax.com/blog/explaining-difference-between-the-hdd-and-nvme-drive) and [best applications](https://www.ibm.com/cloud/blog/hard-disk-drive-vs-solid-state-drive)
+#### 11.17
+NVM devices as a caching tier has faster access time and provides more efficiency than HDD. On the other hand, limited read-write times and data leaks makes it not suitable for sparing or long-time storage device than HDDs.
+#### 11.18 [2][3] and additional note [11.14][4]
+#### 11.19 [4][3]
+#### 11.20 [11.15][4]
+#### 11.21 [12.28][1]
+#### 11.22
+RAID Level 5 organization will be faster than RAID Level 1 organization when writing multiple blocks of data. This is because multiple blocks are split between disks meaning that RAID Level 5 can write concurrently on more than one disk. [compare other aspect](https://www.diffen.com/difference/RAID-1-vs-RAID-5)
+#### 11.23 [11.16][4]
+#### 11.24 [11.17][4]
+#### 11.25 [11.25][2]
+#### 11.26 [11.26][2]
 [1]: http://hscc.cs.nthu.edu.tw/~sheujp/homework/os09/HW12_ref.pdf
+[2]: https://www.studocu.com/en-us/document/jacksonville-state-university/fundamentals-of-computer-operating-systems/cs350-chapter-11/41845684
+[3]: https://efreidoc.fr/L3/Operating%20System/Exercises/2012-13/2012-13.exercises.week10.answers.op.pdf4
+[4]: https://blog.csdn.net/apple_72111807/article/details/128245197
