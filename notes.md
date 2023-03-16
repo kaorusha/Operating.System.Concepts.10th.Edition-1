@@ -723,6 +723,7 @@ Direct virtual memory access (DVMA), using virtual addresses that undergo transl
 #### 12.16 [13.7][5]
 #### 12.18
 In a reliable transfer of data, the modules are required to check whether space is available on the target module. It is also required to block the sending module if space is not available. This process requires extra coordination between the modules, but overhead enables the system to provide stronger abstraction than one which does not guarantee the reliable transfer, this abstraction reduces the complexity of the code.
+
 [1]: https://www.studocu.com/en-us/document/jacksonville-state-university/fundamentals-of-computer-operating-systems/cs350-chapter-12/41845698
 [2]: https://sites.cs.ucsb.edu/~tyang/class/170.w06/solutions/solution3.html
 [3]: https://nanopdf.com/download/exe-c07-io_pdf
