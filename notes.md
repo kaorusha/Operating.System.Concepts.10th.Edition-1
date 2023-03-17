@@ -662,7 +662,7 @@ page-reference strings | 1 | 2 | 3 | 4 | 5 | 3 | 4 | 1 | 6 | 7 | 8 | 7 | 8 | 9 |
 ### Practice Exercises
 #### 11.1-11.10
 https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/11.pdf
-#### 11.11 [12.18][1]
+#### 11.11 [12.18][5]
 #### 11.12 
 Due to the lack of moving parts in NVM devices, performance is unaffected by problems like seek time and rotational delay. Therefore, a straightforward FCFS policy will do.
 #### 11.13
@@ -693,55 +693,54 @@ cylinder request         | 0 | 356 | 544 | 1212 | 1523 | 1618 | 2069 | 2150 | 22
 HDDs and NVM devices [compare](https://www.promax.com/blog/explaining-difference-between-the-hdd-and-nvme-drive) and [best applications](https://www.ibm.com/cloud/blog/hard-disk-drive-vs-solid-state-drive)
 #### 11.17
 NVM devices as a caching tier has faster access time and provides more efficiency than HDD. On the other hand, limited read-write times and data leaks makes it not suitable for sparing or long-time storage device than HDDs.
-#### 11.18 [2][3] and additional note [11.14][4]
-#### 11.19 [4][3]
-#### 11.20 [11.15][4]
-#### 11.21 [12.28][1]
+#### 11.18 [2][7] and additional note [11.14][8]
+#### 11.19 [4][7]
+#### 11.20 [11.15][8]
+#### 11.21 [12.28][5]
 #### 11.22
 RAID Level 5 organization will be faster than RAID Level 1 organization when writing multiple blocks of data. This is because multiple blocks are split between disks meaning that RAID Level 5 can write concurrently on more than one disk. [compare other aspect](https://www.diffen.com/difference/RAID-1-vs-RAID-5)
-#### 11.23 [11.16][4]
-#### 11.24 [11.17][4]
-#### 11.25 [11.25][2]
-#### 11.26 [11.26][2]
-[1]: http://hscc.cs.nthu.edu.tw/~sheujp/homework/os09/HW12_ref.pdf
-[2]: https://www.studocu.com/en-us/document/jacksonville-state-university/fundamentals-of-computer-operating-systems/cs350-chapter-11/41845684
-[3]: https://efreidoc.fr/L3/Operating%20System/Exercises/2012-13/2012-13.exercises.week10.answers.op.pdf4
-[4]: https://blog.csdn.net/apple_72111807/article/details/128245197
+#### 11.23 [11.16][8]
+#### 11.24 [11.17][8]
+#### 11.25 [11.25][6]
+#### 11.26 [11.26][6]
+[5]: http://hscc.cs.nthu.edu.tw/~sheujp/homework/os09/HW12_ref.pdf
+[6]: https://www.studocu.com/en-us/document/jacksonville-state-university/fundamentals-of-computer-operating-systems/cs350-chapter-11/41845684
+[7]: https://efreidoc.fr/L3/Operating%20System/Exercises/2012-13/2012-13.exercises.week10.answers.op.pdf4
+[8]: https://blog.csdn.net/apple_72111807/article/details/128245197
 ## Chapter 12
 ### Practice Exercises
 #### 12.1-12.7
 https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/12.pdf
-#### 12.8 [12.8][1]
-#### 12.9 [12.9][1]
-#### 12.10 [13.3][2]
-#### 12.11 [12.11][1]
-#### 12.12 [10][3]
-#### 12.13 [13.6][2]
-#### 12.14 [13.14][4]
+#### 12.8 [12.8][9]
+#### 12.9 [12.9][9]
+#### 12.10 [13.3][10]
+#### 12.11 [12.11][9]
+#### 12.12 [10][11]
+#### 12.13 [13.6][10]
+#### 12.14 [13.14][12]
 #### 12.15 
 Direct virtual memory access (DVMA), using virtual addresses that undergo translation to physical addresses. DVMA can perform a transfer between two memory-mapped devices without the intervention of the CPU or the use of main memory. Platforms that support DVMA provide the device with a virtual address rather than a physical address. With this memory access method, the platform translates device accesses to the provided virtual address into the proper physical addresses using a type of Memory Management Unit (MMU). The device transfers data to and from a contiguous virtual image that can be mapped to dis-contiguous physical pages. Devices that operate on these platforms do not require Scatter/Gather DMA capability. [9.1.3 Performing DMA on SPARC](https://www.jungo.com/st/support/documentation/windriver/901/wdpci_man_mhtml/node48.html)
-#### 12.16 [13.7][5]
+#### 12.16 [13.7][13]
 #### 12.18
 In a reliable transfer of data, the modules are required to check whether space is available on the target module. It is also required to block the sending module if space is not available. This process requires extra coordination between the modules, but overhead enables the system to provide stronger abstraction than one which does not guarantee the reliable transfer, this abstraction reduces the complexity of the code.
 
-[1]: https://www.studocu.com/en-us/document/jacksonville-state-university/fundamentals-of-computer-operating-systems/cs350-chapter-12/41845698
-[2]: https://sites.cs.ucsb.edu/~tyang/class/170.w06/solutions/solution3.html
-[3]: https://nanopdf.com/download/exe-c07-io_pdf
-[4]: https://framist.github.io/2021/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BD%9C%E4%B8%9A%E5%8D%81%E4%B8%89/
-[5]: http://alumni.cs.ucr.edu/~choua/school/cs153/Solution%20Manual.pdf
+[9]: https://www.studocu.com/en-us/document/jacksonville-state-university/fundamentals-of-computer-operating-systems/cs350-chapter-12/41845698
+[10]: https://sites.cs.ucsb.edu/~tyang/class/170.w06/solutions/solution3.html
+[11]: https://nanopdf.com/download/exe-c07-io_pdf
+[12]: https://framist.github.io/2021/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BD%9C%E4%B8%9A%E5%8D%81%E4%B8%89/
+[13]: http://alumni.cs.ucr.edu/~choua/school/cs153/Solution%20Manual.pdf
 ## Chapter 13
 ### Practice Exercises
 #### 13.1-13.8
 https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/13.pdf
-#### 13.9 [11.1][1]
-#### 13.10 [11.10][2]
-#### 13.11 [11.11][2]
-#### 13.12 [11.12][2]
-#### 13.13 [11.8][1]
+#### 13.9 [11.1][13]
+#### 13.10 [11.10][14]
+#### 13.11 [11.11][14]
+#### 13.12 [11.12][14]
+#### 13.13 [11.8][13]
 #### 13.14
 When a block is accessed, the file system could prefetch the subsequent blocks in anticipation of future requests to these blocks. This prefetching optimization would reduce the waiting time experienced by the process for future requests.
 #### 13.15
 A database. A file in the database will be searched for the file by a file pointer; if the file is found, it's contents will be fetched.
-#### 13.16 [11.10][1]
-[1]: http://alumni.cs.ucr.edu/~choua/school/cs153/Solution%20Manual.pdf
-[2]: https://framist.github.io/2021/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BD%9C%E4%B8%9A%E5%8D%81%E4%B8%80/
+#### 13.16 [11.10][13]
+[14]: https://framist.github.io/2021/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BD%9C%E4%B8%9A%E5%8D%81%E4%B8%80/
