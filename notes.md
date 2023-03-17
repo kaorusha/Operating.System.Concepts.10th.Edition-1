@@ -729,3 +729,19 @@ In a reliable transfer of data, the modules are required to check whether space 
 [3]: https://nanopdf.com/download/exe-c07-io_pdf
 [4]: https://framist.github.io/2021/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BD%9C%E4%B8%9A%E5%8D%81%E4%B8%89/
 [5]: http://alumni.cs.ucr.edu/~choua/school/cs153/Solution%20Manual.pdf
+## Chapter 13
+### Practice Exercises
+#### 13.1-13.8
+https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/13.pdf
+#### 13.9 [11.1][1]
+#### 13.10 [11.10][2]
+#### 13.11 [11.11][2]
+#### 13.12 [11.12][2]
+#### 13.13 [11.8][1]
+#### 13.14
+When a block is accessed, the file system could prefetch the subsequent blocks in anticipation of future requests to these blocks. This prefetching optimization would reduce the waiting time experienced by the process for future requests.
+#### 13.15
+A database. A file in the database will be searched for the file by a file pointer; if the file is found, it's contents will be fetched.
+#### 13.16 [11.10][1]
+[1]: http://alumni.cs.ucr.edu/~choua/school/cs153/Solution%20Manual.pdf
+[2]: https://framist.github.io/2021/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BD%9C%E4%B8%9A%E5%8D%81%E4%B8%80/
