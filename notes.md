@@ -749,4 +749,13 @@ A database. A file in the database will be searched for the file by a file point
 #### 14.1-14.6
 https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/14.pdf
 #### 14.1 [explain see 4](https://hackmd.io/@25077667/os-hw5#4-Consider-a-file-currently-consisting-of-100-blocks-Assume-that-the-file-control-block-and-the-index-block-in-the-case-of-indexed-allocation-is-already-in-memory-Calculate-how-many-disk-IO-operations-are-required-for-contiguous-linked-and-indexed-single-level-allocation-strategies-if-for-one-block-the-following-conditions-hold-In-the-contiguous-allocation-case-assume-that-there-is-no-room-to-grow-in-the-beginning-but-there-is-room-to-grow-in-the-end-Assume-that-the-block-information-to-be-added-is-stored-in-memory)
-#### 14.7
+#### 14.7 [11.2][15]
+#### 14.8 [12.10][16]
+#### 14.9 [12.11][16]
+#### 14.10 [12.2][13]
+#### 14.11 [11.3][15]
+#### 14.12 [14.12](https://www.studocu.com/en-us/document/jacksonville-state-university/fundamentals-of-computer-operating-systems/cs350-chapter-14/41845702)
+#### 14.13 
+The main advantage is there might be more disk space on the other mount point. This is generally finished with symbolic connections, which has the disadvantage that renaming the record won't have the impact you expect or while making a document with a comparable name in a similar area, the document will be made on the first file system. Likewise, renaming documents over the distinctive mount focuses may fail.
+[15]: http://hscc.cs.nthu.edu.tw/~sheujp/homework/os09/HW11_ref.pdf
+[16]: https://framist.github.io/2021/06/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BD%9C%E4%B8%9A%E5%8D%81%E4%BA%8C/
