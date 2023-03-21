@@ -752,10 +752,31 @@ https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-
 #### 14.7 [11.2][15]
 #### 14.8 [12.10][16]
 #### 14.9 [12.11][16]
-#### 14.10 [12.2][13]
+#### 14.10
+* a, c [12.2][13]
+* b. 4 disk operations.  
+  * 1- Reading in the disk block containing the root directory  
+  * 2- disk block containing the directories b 
+  * 3- disk block containing the directories c 
+  * 4- reading in the disk block containing the file
 #### 14.11 [11.3][15]
 #### 14.12 [14.12](https://www.studocu.com/en-us/document/jacksonville-state-university/fundamentals-of-computer-operating-systems/cs350-chapter-14/41845702)
 #### 14.13 
-The main advantage is there might be more disk space on the other mount point. This is generally finished with symbolic connections, which has the disadvantage that renaming the record won't have the impact you expect or while making a document with a comparable name in a similar area, the document will be made on the first file system. Likewise, renaming documents over the distinctive mount focuses may fail.
+* Advantages
+  * There might be more disk space on the other mount point.
+  * More transparency because the user doesn’t need to be aware of mount points and create links in all scenarios.
+* Disadvantages
+  * This is generally finished with symbolic connections, which has the disadvantage that renaming the record won't have the impact you expect or while making a document with a comparable name in a similar area, the document will be made on the first file system. Likewise, renaming documents over the distinctive mount focuses may fail. 
+  * Failure to provide transparent access to the file when the file system containing the link might be mounted while the file system containing the target file might not be. In this case, the error condition will show that the particular link is a dead link and that the link does indeed cross filesystem boundaries
+#### 14.14 [12.6][13]
+#### 14.15 [12.16][16]
+#### 14.16 [12.8][13]
+#### 14.17 [12.19][16]
+#### 14.18 [12.14][13]
+#### 14.19 
+The advantage is that the application can deal with the failure condition in a more intelligent manner if it realizes that it incurred an error while accessing a file stored in a remote file system. For instance, a file open operation could simply fail instead of hanging when accessing a remote file on a failed server and the application could deal with the failure in the best possible manner; if the operation were simply to hang, then the entire application hangs, which is not desirable. The disadvantage however is the lack of uniformity in failure semantics and the resulting complexity in application code.
+#### 14.20
+UNIX consistency semantics requires updates to a file to be immediately available to other processes. Supporting such a semantics for shared files on remote file systems could result in the following inefficiencies: all updates by a client have to be immediately reported to the file server instead of being batched (or even ignored if the updates are to a temporary file), and updates have to be communicated by the file server to clients caching the data immediately, again resulting in more communication.
+
 [15]: http://hscc.cs.nthu.edu.tw/~sheujp/homework/os09/HW11_ref.pdf
 [16]: https://framist.github.io/2021/06/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BD%9C%E4%B8%9A%E5%8D%81%E4%BA%8C/
