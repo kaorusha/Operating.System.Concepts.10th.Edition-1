@@ -780,3 +780,17 @@ UNIX consistency semantics requires updates to a file to be immediately availabl
 
 [15]: http://hscc.cs.nthu.edu.tw/~sheujp/homework/os09/HW11_ref.pdf
 [16]: https://framist.github.io/2021/06/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BD%9C%E4%B8%9A%E5%8D%81%E4%BA%8C/
+## Chapter 15
+### Practice Exercises
+#### 15.1-15.5
+https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/15.pdf
+#### 15.6
+One issue is the maintenance of the consistency of the name cache. In case the cache entry becomes inconsistent, then either it should be updated or its inconsistency should be detected when it is used for the next time. In case of the inconsistency being detected later, there must be a fallback mechanism to determine the new translation for the name.
+#### 15.7 Given a mounted file system with write operations underway, and a system crash or power loss, what must be done before the file system is remounted if: (a) The file system is not log-structured? (b) The file system is log-structured?
+* (a) Some NVM storage devices contain a battery or supercapacitor to provide enough power, even during a power loss, to write data from device buffers to the storage media so the data are not lost. But even those precautions do not protect against corruption due to a crash.
+* (b) If the system crashes, the log file will contain zero or more transactions. Any transactions it contains were not completed to the file system, even though they were committed by the operating system, so they must now be completed. The transactions can be executed from the pointer until the work is complete so that the file-system structures remain consistent. The only problem occurs when a transaction was aborted—that is, was not committed before the system crashed. Any changes from such a transaction that were applied to the file system must be undone, again preserving the consistency of the file system. This recovery is all that is needed after a crash, eliminating any problems with consistency checking.
+#### 15.8 Why do operating systems mount the root file system automatically at boot time?
+The root partition selected by the boot loader, which contains the operating-system kernel.
+#### 15.9 Why do operating systems require file systems other than root to be mounted?
+An operating system has a static mounting preconfiguration that is established at boot time, which enables the operating system to traverse its directory
+structure, switching seamlessly among file systems of varying types.
