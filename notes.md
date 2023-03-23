@@ -794,3 +794,24 @@ The root partition selected by the boot loader, which contains the operating-sys
 #### 15.9 Why do operating systems require file systems other than root to be mounted?
 An operating system has a static mounting preconfiguration that is established at boot time, which enables the operating system to traverse its directory
 structure, switching seamlessly among file systems of varying types.
+## Chapter 16
+### Practice Exercise
+#### 16.1 Buffer-overflow attacks can be avoided by adopting a better program-ming methodology or by using special hardware support. Discuss these solutions.
+Preventing the execution of code that is found in the stack segment of a process's location space is one sort of hardware support that makes sure that a buffer overflow attack doesn't take place.
+#### 16.2 [19.1][13]
+#### 16.3 What is the purpose of using a “salt” along with a user-provided pass-word? Where should the salt be stored, and how should it be used?
+The salt value is added to the password to ensure that if two plaintext passwords are the same, they result in different hash values. In addition, the salt value makes hashing a dictionary ineffective, because each dictionary term would need to be combined with each salt value for comparison to the stored passwords. Newer versions of UNIX also store the hashed password entries in a file readable only by the superuser. The programs that compare the hash to the stored value run setuid to root, so they can read this file, but other users cannot.
+#### 16.4 [19.2][13]
+#### 16.5 An experimental addition to UNIX allows a user to connect a watchdog program to a file. The watchdog is invoked whenever a program requests access to the file. The watchdog then either grants or denies access to the file. Discuss two pros and two cons of using watchdogs for security.
+The watchdog program becomes the primary security mechanism for file access. Because of this we find its primary benefits and detractions. A benefit of this approach is that you have a centralized mechanism for controlling access to a file—the watchdog program. By ensuring the watchdog program has sufficient security techniques, you are assured of having secure access to the file. However, this is also the primary negative of this approach as well—the watchdog program becomes the bottleneck. If the watchdog program is not properly implemented (that is, it has a security hole), there are no other backup mechanisms for file protection.
+#### 16.6 [19.5][13]
+#### 16.7 [19.7][13]
+#### 16.8 [19.8][13]
+#### 16.9 What commonly used computer programs are prone to man-in-the-middle attacks? Discuss solutions for preventing this form of attack. 
+Any protocol that requires a sender and a receiver to agree on a session key before they start communicating is prone to the man-in-the-middle attack. Transport Layer Security (TLS) is a cryptographic protocol, which is a complex protocol with many options that enables two computers to communicate securely in which asymmetric cryptography is used so that a client and a server can establish a secure session key that can be used for symmetric encryption of the session between the two—all of this while avoid-ing man-in-the-middle and replay attacks. For added cryptographic strength, the session keys are forgotten once a session is completed. Another communication between the two will require generation of new session keys.
+#### 16.10 Compare symmetric and asymmetric encryption schemes, and discuss the circumstances under which a distributed system would use one or the other.
+Both encryption methods use keys to encrypt and decrypt data. The main difference is that symmetric encryption uses the same key to encrypt and decrypt data. In contrast, asymmetric encryption uses a pair of keys – a public key to encrypt data and a private key to decrypt information. Symmetric cryptography usually simpler transformations that are not computationally intensive, but less secure. Asymmetric much more computationally intensive, but
+very secure (based on cryptographic hardness property of finding prime factors of a number). Asymmetric typically used for authentication, key distribution, small amounts of confidential infomation while symmetric encryption for bulk data encryption.
+#### 16.11 Why doesn’t $D_{kd,N}(E_{ke,N}(m))$ provide authentication of the sender? To what uses can such an encryption be put?
+$D_{kd,N}(E_{ke,N}(m))$ implies that the message is encrypted using the public key and afterward decoded kd,N ke,N utilizing the private key. The public key crypto systems does not provide the necessary authentication to the receiver. This scheme isn't adequate to ensure validation since any entity can acquire the public keys and accordingly might have created the message. The only entity that can decrypt the message is the entity that owns the private key and provides sufficient security to guarantee authentication.
+#### 16.12 
