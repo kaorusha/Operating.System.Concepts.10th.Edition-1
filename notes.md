@@ -828,3 +828,25 @@ The system partition is mounted read-only, whereas the data partition is read–
 ### Practice Exercise
 #### 17.1-17.6
 https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/17.pdf
+#### 17.11
+Yes, this approach is equivalent to including the access privileges of domain B in those of domain A as long as the switch privileges associated with domain B are also copied over to domain A.
+#### 17.12
+Set up a dynamic protection structure that changes the set of resources available with respect to the time allotted to the three categories of users. As time changes, so does the domain of users eligible to play the computer games. When the time comes that a user’s eligibility is over, a revocation process must occur. Revocation could be immediate, selective (since the computer staff may access it at any hour), total, and temporary (since rights to access will be given back later in the day). 
+#### 17.13
+An hardware feature that is required for proficient capability manipulation is permitting a capability object to be distinguished as either a capability of accessing object. Typically, several bits are important to recognize the various kinds of capability objects. This couldn't be utilized for routine memory protection since they offer little protection apart from a binary value demonstrating whether they are a capability object or something else.
+#### 17.14 [2.a][17]
+#### 17.15 [2.b][17]
+#### [17.16](https://brainly.com/question/29854236)
+#### 17.17
+The need-to-know principle: A process can only access these resources it has been authorized and are required to complete its task. Sticking to this rule can limit the damage a process can do to the system.
+#### 17.18
+* a. The MULTICS ring-protection scheme : The ring protection scheme in MULTICS does not really implement the need-to-know rule. For instance, if an object must be accessible in a domain at ring level j however not available in a domain at ring level i, at that point we should have j<i.j<i. This requirement means that each item available in level i should be open in level j.
+* b. JVM’s stack-inspection scheme allow module designers to enforce the need-to-know principle.
+#### 17.19
+If a Java program could directly alter annotations of its stack frame then it could perform operations it does not have permission. By permitting a Java program to legitimately adjust the annotations of a stack outline, a program might play out an activity for which it doesn't have the essential consents, in this manner abusing the security model of Java.
+#### [17.20](https://brainly.in/question/9544375)
+#### 17.21
+The principle of least privilege: Minimizes the attack surface, diminishing avenues a malicious actor can use to access sensitive data or carry out an attack by protecting superuser and administrator privileges. Reduces malware propagation by not allowing users to install unauthorized applications.
+#### 17.22
+The guideline of least privilege just restricts the damage but doesn't forestall the abuse of access privilege related to a module if the module were to be undermined. For example, if a system code is given access privileges to manage the errand of managing tertiary storage, a security loophole in the code would not cause any damage to different parts of the system, however, it could even now cause protection failures in getting to the tertiary storage.
+[17]: http://www.cs.cornell.edu/courses/cs414/2007sp/homework/hw6_soln.pdf
