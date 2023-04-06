@@ -880,3 +880,41 @@ information about why guests exit back to the host.
 * Interrupt remapping feature automatically deliver an interrupt destined for a guest to a core that is currently running a thread of that guest. That way, the guest receives interrupts without any need for the VMM to intercede in their delivery. Without interrupt remapping, malicious guests could generate interrupts that could be used to gain control of the host system.
 #### 18.6 Why is live migration possible in virtual environments but much less possible for a native operating system?
 Without virtualization: we must warn users, shut down the processes, possibly move the binaries, and restart the processes on the new system. Only then can users access the services again. With live migration, we can decrease the load on an overloaded system or make hardware or system changes with no discernable disruption for users.
+## Chapter 19
+### Practice Exercise
+#### 19.1 [15.8][18]
+#### 19.1-19.6
+https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/19.pdf
+#### 19.7
+In computation migration, an RPC might be sent to a remote processor in order to execute a computation that could be more efficiently executed on the remote node. Whereas, in process migration, the entire process is transported to the remote node, where the process continues its execution.
+#### 19.8
+The OSI model formalizes some of the earlier work done in network protocols but was developed in the late 1970s and is currently not in widespread use. A specific network layered-protocol may accomplish the equivalent usefulness of the ISO in less layers by utilizing one layer to execute usefulness provided in two (or conceivably more) layers in the ISO model. Different models may conclude there is no requirement for specific layers in the ISO model. For instance, the presentation and session layers are missing in the TCP/IP convention, because it combines several functions in each layer, it is more difficult to implement but more efficient than OSI networking. Protocals with Omitted layers lose some function or header informations and securities.
+#### 19.9 [15.6][13]
+Increasing the speed could require the traffic packets to be broken down into smaller bits, which could result in dropped packets or collisions. Faster Systems might have the option to send more parcels in a more limited measure of time. The network would then have more parcels travellingon it, resulting in more collisons, and along these lines less throughput relative to the number of packets being sent. More networks can be utilised, with less systems per network, to decrease the quantity of crashes.
+#### 19.10
+A disadvantage is that routers or gateways as dedicated devices may be more costly than using off-the-shelf components that comprise a modern personal computer. The advantages of using dedicated hardware devices for routers and gateways are that they very fast as all their logic is provided in hardware (firmware.)
+#### 19.11 [15.10][13], [15.9][18]
+#### 19.12
+Hierarchial structures are important as they make it easy to maintain changes. In an hierarchial structure any changes in the identity of name servers require an update only at the next level name server in the hierarchy. Changes are therefore localized.
+#### 19.13
+The transport layer supports [reliable delivery](https://www.javatpoint.com/computer-network-transport-layer), which has four aspects:
+* Error control
+* Sequence control
+* Loss control
+* Duplication control
+In transport layer acknowledgement is sent for whole message. if you only provide error control at transport layer then, there is no way u can detect error at particular frame. so transport layer have to send whole message again. In data link layer acknowledge sent for node to node(hop to hop) for each frame. so if any frame is not received correctly then only that frame is send again from failed router, no need to send again from sender. A link-layer reliable-delivery service is often used for links that are prone to high error rates, such as a wireless link. The goal is to correct an error locally, on the link where the error occurs, rather than forcing an end-to-end retransmission of the data by a transport - layer or application-layer protocol.
+#### 19.16
+UDP can't be used as an appropriate alternative to TCP for HTTP even though it is connection less in nature. UDP is unreliable in nature and the documents delivered by the web must be delivered reliably, hence UDP can't be used.(This is anything but difficult to outline - a solitary packet missing from a picture downloaded from the web makes the picture unreadable.) To improve HTTP performance we can modify how TCP connections are used like [caching](https://www.justanswer.com/computer-networking/77sdw-original-http-protocol-used-tcp-ip-underlying-network.html) the data and reduce duplicated data transmission.
+#### 19.17 [15.13][13]
+#### 19.18 
+The benefits of a DFS compared with a file system in a centralized system include increased performance and fault tolerability as well as higher availability. Because multiple copies of all files live on different file servers, if one of those nodes fails, your file from another location is still available. A transparent DFS facilitates client mobility by bringing the client’s environment to the site where the client logs in.
+#### 19.19
+The main goal of a client–server architecture is to allow transparent file sharing among one or more clients as if the files were stored locally on the individual client machines. If many applications need to be run in parallel on large data sets with high availability and scalability, the cluster-based model is more appropriate than the client–server model.
+* Hosting student files in a university lab: client-server model
+* Processing data sent by the Hubble telescope: cluster-based model. Computer clustering can help resolve this problem by using redundant components and clustering methods such that failures are detected and failing over to working components continues server operations.
+* Sharing data with multiple devices from a home server: client-server model
+#### 19.20
+* Location transparency: The name of a file does not reveal any hint of the file’s physical storage location.
+* Location independence: The name of a file need not be changed when the file’s physical storage location changes.
+
+[18]: https://courses.cs.washington.edu/courses/cse451/98au/Section/ch15/
