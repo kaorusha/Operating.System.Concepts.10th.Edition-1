@@ -913,8 +913,14 @@ The main goal of a client–server architecture is to allow transparent file sha
 * Hosting student files in a university lab: client-server model
 * Processing data sent by the Hubble telescope: cluster-based model. Computer clustering can help resolve this problem by using redundant components and clustering methods such that failures are detected and failing over to working components continues server operations.
 * Sharing data with multiple devices from a home server: client-server model
-#### 19.20
+#### 19.20 [17.3][19]
 * Location transparency: The name of a file does not reveal any hint of the file’s physical storage location.
-* Location independence: The name of a file need not be changed when the file’s physical storage location changes.
-
+* Location independence: The name of a file need not be changed when the file’s physical storage location changes. Files can be moved automatically between different file systems when the file is migrated.
+#### 19.21 [17.4][19]
+#### 19.22 [17.5][19]
+#### 19.23 [17.7][19]
+#### 19.24 
+Block level deduplication is always efficient then file-level deduplication because In file level you have to dump whole file in data storage if its version changed where as in block level you have to dump the changed block which takes comparatively less space in data storage. [ref](https://akashtiwari.github.io/)
+#### 19.25 [Data Deduplication metadata list](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831434(v=ws.11)?redirectedfrom=MSDN)
 [18]: https://courses.cs.washington.edu/courses/cse451/98au/Section/ch15/
+[19]: https://studylib.net/doc/8644957/distributed-file-systems
