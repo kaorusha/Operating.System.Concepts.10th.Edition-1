@@ -1001,3 +1001,35 @@ Linux allows a process to take on only a subset of the rights of the effective u
 The open accessibility of a operating system's source code has both positive and negative effects on security, and it is presumably a mistake to state that it is certainly something worth being thankful for or a terrible thing. Linux's source code is available for investigation by both the good guys and the bad guys. In its favor, this has brought about the code being examined by an enormous number of individuals who are worried about security and who have eliminated any vulnerabilities they have found.
 
 Then again is the security through obscurity argument, which expresses that attacker jobs are made simpler if they have access to the source code of the system they are attempting to penetrate. By denying attackers information about a system, the expectation is that it will be harder for those attackers to discover and abuse any security weaknesses that might be present.
+## Chapter 21
+### Practice Exercises
+#### 21.1-21.13
+https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/PDF-practice-solu-dir/21.pdf
+#### 21.14
+Deferred procedure calls are utilized to delay interrupt on processing in circumstances where the processing of device interrupts can be broken into a critical portion that is utilized to unblock the device and a non-critical portion that can be scheduled later at a lower priority. The non-critical segment of code is scheduled for later execution by queuing a deferred procedure call.
+#### 21.15
+User mode code can access kernel mode objects by using a reference value called a handle. An object handle is in this way an identifier (unique to a process) that permits access and manipulation of a system resource. At the point when a user mode process needs to use an object it calls the object manager's open method. A reference to the object is inserted in the process' object table and a handle is returned. Processes can acquire handles by making an object , opening a current object, accepting a copied handle from another process, or by acquiring a handle from a parent process.
+#### 21.16
+The VM Manager utilizes a page based management scheme. Pages of information assigned to a process that are not in physical memory are put away in either paging fiels on disk or mapped to a regular file on a local or remote file system. To improve execution of this plan, a privileged process is permitted to secure selected pages in physical memory keeping those pages from being paged out. Moreover, since when a page is utilised, adjacent pages will probably be utilized soon, adjacent pages are prefetched to lessen the total number of page deficiencies.
+#### 21.17
+At the point when a process accesses a no-access page, an exemption is raised. This feature is utilized to check whether a faulty program accesses past the end of an array. The array should be allocated in a way with the end goal that it shows up toward the end of a page, so that buffer overruns would cause exemptions.
+#### 21.18
+Data is communicated using one of the following three facilities:
+* messages are simply copied from one process to the other.
+* a shared memory segment is created and messages simply contain a pointer into the shared memory segment, thereby avoiding copies between processes.
+* a process directly writes into the other process’s virtual space.
+#### 21.19
+As opposed to other operating systems where caching is done by the file system, Windows XP gives a centralized cache manager which works closely with the VM supervisor to give caching services to all parts under control of the I/O manager. The size of the cache changes dynamically relying on the free memory accessible in the system. The cache manager maps files into the upper portion of the system cache address space. This cache is separated into blocks which can each hold a memory-mapped region of a record.
+#### 21.20
+NTFS is usually called the hierarchical or directory tree model. The "base" of the directory structure is the root directory, which is actually one of the key system metadata files on an NTFS volume. Within this root directory, references are stored to files, or to other directories. Unix uses a hierarchical file system structure, much like an upside-down tree, with root (/) at the base of the file system and all other directories spreading from there. It has a root directory (/) that contains other files and directories.
+#### 21.21
+A process manages the resources required to execute a program. Microsoft's Windows OS manages processes using executable units called threads. Each process is protected from other processes, and contains its own virtual address space, which it shares with all of the threads within the process.
+#### 21.22
+A fiber is a user-mode code that is scheduled according to a user-defined scheduling algorithm. Its execution is continuous, which means that it has a defined beginning and an end. The fiber abstraction provided by Windows is a user-mode facility and the kernel is not aware that fibers exist.
+A fiber is a process's sequential stream of execution. Multiple fibers can exist within a process, but unlike threads, only one fiber can be active at once. To support legacy applications created for a fiber-execution model, the fiber mechanism is used.
+This is a part of application processing. Although this may not always be the case depending on the operating system, threads are typically thought of as preemptive whereas fibers are thought of as lightweight, cooperative threads. Both are different ways for your application to run.
+* Threads: The current execution path for threads may at any time be interrupted or preempted.
+* Fibers: Only when the fiber yields execution does the current execution route with fibers get halted.
+#### 21.23
+User-mode scheduling (UMS) is a lightweight mechanism that applications can use to schedule their own threads. An application can switch between UMS threads in user mode without involving the system scheduler and regain control of the processor if a UMS thread blocks in the kernel. UMS threads differ from fibers in that each UMS thread has its own thread context instead of sharing the thread context of a single thread. The ability to switch between threads in user mode makes UMS more efficient than thread pools for managing large numbers of short-duration work items that require few system. Unlike fibers, UMS is not intended to be used directly by programmers. The details of writing user-mode schedulers can be very challenging, and UMS does not include such a scheduler. Rather, the schedulers come from programming language libraries that build on top of UMS.
+#### 21.24
